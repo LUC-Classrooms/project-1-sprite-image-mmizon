@@ -1,9 +1,9 @@
 /**
  * Project 1 - Interactive Image
  * Name: Madison Mizon;
-    Completion date ______;
+    Completion date 3/21/24;
     Basic description of the image: a possum;
-    Basic description of user interactions to expect;
+    Basic description of user interactions to expect; the possum scurries to the right and when you click, it will do a little jump and open its mouth. 
     Citations of any code sources used for reference: I googled the color codes for all the colors I used. Also used the textbook;
     */
 
