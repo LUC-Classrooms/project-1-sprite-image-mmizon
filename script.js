@@ -8,6 +8,8 @@
     */
 
 // Global Variables go here
+var x = 0 //horizontal location 
+var y = 0 //vertical location
 
 function setup(){
   // this function will run once
@@ -19,61 +21,52 @@ function draw(){
   // this function runs again and again (60x per second)
   background(200); //light gray background
 
-  possum(x, y, d, r); // call the possum() function (see below)
-  
-  // add your image drawing code here
-  
+  push(); // create a new temporary drawing layer
+  translate(width/4, height/4)
 
-/* 
+  /* 
   Use the following if()...else() structure to incorporate mouse click control of your animation
 */
-  if(mouseIsPressed){
-    fill(255, 127, 127) // pink
-    triangle(228, 103, 230, 121, 234, 110) //mouth//check each frame to see if the mouse is pressed, then do something
-  } 
-}
-
-/** 
- * the mousePressed() function is separate from draw(). 
- * It only runs (one time) if the mouse is clicked
-*/
-function mousePressed(){
-  
-  // add code here if you want something to execute once each time the mouse is pressed
+if(mouseIsPressed){
+  rotate(-.2)
+  fill(255, 127, 127) // pink
+  triangle(x+30, 3, x+32, 21, x+36, 10) //mouth
+} else {
+  rotate(0)
 }
 
 
-function possum(tempX, tempY, tempD, tempR){
-  let r = tempR; // rotation value
-  let d = tempD; // diameter 
-
-  push(); // create a layer
-  translate(tempX, tempY); // use the first two arguments to determing location
-  rotate(r);
-
-  //drawing: 
+  // add your image drawing code here
+  //drawing body: 
   fill(228, 228, 228) //grey for body
-  ellipse(200, 100, 80, 40) //body
+  ellipse(x+0, y+0, 80, 40) //body
   fill(250) //back to white
 
   //face
-  triangle(220, 90, 243, 85, 240, 120) //face
+  triangle(x+20, -10, x+43, -15, x+40, 20) //face
   fill(0) //black eyes
-  ellipse (238, 95, 3) //eyes
-  ellipse (230, 96, 3)
+  ellipse (x+38, -5, 3) //eyes
+  ellipse (x+30, -6, 3)
   fill(255, 192, 203) // pink
-  ellipse (240, 118, 5) //nose
-  arc(223, 90, 8, 20, PI, TWO_PI) //ears
-  arc(238, 88, 8, 20, PI, TWO_PI)
+  ellipse (x+40, 18, 5) //nose
+  arc(x+23, -10, 8, 20, PI, TWO_PI) //ears
+  arc(x+38, -12, 8, 20, PI, TWO_PI)
 
   //tail and legs
   fill(200) //grey tail
-  arc(142, 96, 40, 25, TWO_PI, PI) //tail
+  arc(x+-58, -4, 40, 25, TWO_PI, PI) //tail
   fill(250) //back to white
-  rect(173, 112, 7, 21) //legs
-  rect(185, 120, 7, 10)
-  rect(220, 117, 7, 10)
-  rect(204, 113, 7, 20)
+  rect(x+-27, 12, 7, 21) //legs
+  rect(x+-15, 20, 7, 10)
+  rect(x+20, 17, 7, 10)
+  rect(x+4, 13, 7, 20)
 
-  pop(); // dispose of the layer
-}
+  pop(); // dispose of the drawing layer
+
+  //movement
+  x = x + .2;
+  if(x>100){
+    x = 0;
+  } 
+
+  } 
